@@ -1,0 +1,57 @@
+.debug {
+    border: 1px solid red;
+}
+
+.login-page-wrapper {
+    background-color: rgb(237, 237, 237);
+}
+
+.login-container {
+    width: 90vw;
+    background-color: white;
+    border-radius: 12px;
+}
+
+.login-container-left {
+    border-radius: 10px;
+    padding: 2rem;
+    background-color: rgb(48, 64, 214);
+    color: rgb(255, 255, 255);
+    max-width: 19rem;
+    display: none;
+}
+
+.login-container-left h1 {
+    font-weight: 200;
+    font-size: 32px;
+    line-height: 40px;
+    margin-bottom: 32px;
+}
+
+.login-container-left p {
+    font-family: Roboto, sans-serif;
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 300;
+    margin-top: 8px;
+}
+
+.login-container-left img {
+    width: 100%;
+    margin-top: 4rem;
+}
+
+.link-go-to-home {
+    text-decoration: none;
+    color: rgb(71, 71, 210);
+}
+
+@media screen and (min-width: 769px) {
+    .login-container {
+        width: 45rem;
+    }
+
+    .login-container-left {
+        display: block;
+    }
+}

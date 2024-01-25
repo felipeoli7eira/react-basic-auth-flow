@@ -1,11 +1,20 @@
-import { createContext, useEffect, useState } from 'react';
+import { createContext, useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Toast } from 'primereact/toast';
 
 export const AuthContext = createContext({});
 
 export const AuthProvider = ({ children }) => {
     const navigate = useNavigate();
     const appAuthTokenName = 'react_authflow_user';
+    const toast = useRef(null);
+    const showLoginInfo = () => {
+        toast.current.show({
+            severity: 'info',
+            summary: 'Dados incorretos',
+            detail: 'Use dev@react.com e 123',
+        });
+    };
 
     const [user, defineUser] = useState(null);
     const [loadingUserLogged, setLoadingUserLogged] = useState(true);
@@ -31,7 +40,7 @@ export const AuthProvider = ({ children }) => {
     }, []);
 
     const login = (email, password) => {
-        if (email === 'felipe@gmail.com' && password === '123') {
+        if (email === 'dev@react.com' && password === '123') {
             const user = {
                 id: new Date().getTime(),
                 email,
@@ -45,7 +54,7 @@ export const AuthProvider = ({ children }) => {
             return;
         }
 
-        alert('E-mail ou senha incorreto(s)');
+        showLoginInfo();
     };
 
     const logout = () => {
@@ -63,6 +72,7 @@ export const AuthProvider = ({ children }) => {
 
     return (
         <AuthContext.Provider value={contextData}>
+            <Toast ref={toast} />
             {children}
         </AuthContext.Provider>
     );
